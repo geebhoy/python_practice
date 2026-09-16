@@ -1,6 +1,14 @@
 import requests
 
-response = requests.get('https://example.com')
+response = requests.get("https://jsonplaceholder.typicode.com/users")
 
-print("status: ", response.status_code)
-print("content type: ", response.headers["content-type"])
+print(response.status_code)
+
+users = response.json()
+
+print("Total users:", len(users))
+
+for user in users:
+    print("User:", user["name"])
+print("First user's city:", users[0]["address"]["city"])
+
